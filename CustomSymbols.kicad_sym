@@ -265,7 +265,25 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 5.08 0)
+				(at -27.94 3.81 0)
+				(length 2.54)
+				(name "~{RESET}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -27.94 1.27 0)
 				(length 2.54)
 				(name "CLK"
 					(effects
@@ -283,7 +301,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 2.54 0)
+				(at -27.94 -1.27 0)
 				(length 2.54)
 				(name "DIO"
 					(effects
@@ -301,27 +319,9 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 0 0)
+				(at -27.94 -3.81 0)
 				(length 2.54)
-				(name "RESET"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "10"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at -27.94 -2.54 0)
-				(length 2.54)
-				(name "CS"
+				(name "~{CS}"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -337,7 +337,7 @@
 				)
 			)
 			(pin passive line
-				(at -27.94 -6.35 0)
+				(at -27.94 -7.62 0)
 				(length 2.54)
 				(name "INT"
 					(effects

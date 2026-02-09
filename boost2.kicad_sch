@@ -6,7 +6,7 @@
 	(paper "A4")
 	(title_block
 		(title "75V Boost Converter")
-		(date "2026-01-14")
+		(date "2026-02-04")
 	)
 	(lib_symbols
 		(symbol "Device:C"
@@ -2121,7 +2121,7 @@
 		)
 		(uuid "d93d7486-8c14-4956-a8c1-36c31a29dbd5")
 	)
-	(text "Crossover: 4266 Hz\nPhase margin: 68.62°\nCrossover Slope: -20.07 dB/dec"
+	(text "Crossover: 4265 Hz\nPhase margin: 67.26°\nCrossover Slope: -20.11 dB/dec\nGain margin: 16dB"
 		(exclude_from_sim no)
 		(at 116.586 138.938 0)
 		(effects
@@ -2830,6 +2830,91 @@
 		(uuid "da56b617-aec3-462c-8638-5ebb0b6a9598")
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 125.73 120.65 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "09e04897-12aa-4592-a161-194e6c722704")
+		(property "Reference" "R24"
+			(at 128.27 119.3799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5k1"
+			(at 128.27 121.9199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 123.952 120.65 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C23186.pdf"
+			(at 125.73 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 125.73 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC PART #" "C23186"
+			(at 125.73 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0b7da402-c27b-4509-bcfe-a1d71d1fe20d")
+		)
+		(pin "2"
+			(uuid "94f3a268-0ace-4c7b-b2f1-8bee798d8fc7")
+		)
+		(instances
+			(project "GP1247AI"
+				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
+					(reference "R24")
+					(unit 1)
+				)
+			)
+			(project "boost2"
+				(path "/c24817a0-576e-4f0d-be02-2b4f6d63f25f"
+					(reference "R?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 187.96 127 0)
 		(mirror y)
@@ -2839,7 +2924,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0fa0dd6a-8c94-4c07-9f61-320ab5571e84")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR084"
 			(at 187.96 133.35 0)
 			(effects
 				(font
@@ -2889,7 +2974,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR047")
+					(reference "#PWR084")
 					(unit 1)
 				)
 			)
@@ -2910,7 +2995,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1d57145d-f3c2-4202-b13f-4d8bbc411b81")
-		(property "Reference" "JP?"
+		(property "Reference" "JP3"
 			(at 236.22 69.342 0)
 			(effects
 				(font
@@ -2936,7 +3021,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C41432920.pdf"
+		(property "Datasheet" ""
 			(at 236.22 71.12 0)
 			(effects
 				(font
@@ -2954,7 +3039,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC PART #" "C41432920"
+		(property "LCSC PART #" ""
 			(at 236.22 71.12 0)
 			(effects
 				(font
@@ -2972,7 +3057,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "JP2")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
@@ -2993,7 +3078,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2f108870-e562-45fb-bff2-f9aca5f21a77")
-		(property "Reference" "#FLG?"
+		(property "Reference" "#FLG07"
 			(at 118.11 66.675 0)
 			(effects
 				(font
@@ -3065,7 +3150,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "30af8a07-40f9-4421-ada2-be14c6e06dc9")
-		(property "Reference" "C?"
+		(property "Reference" "C36"
 			(at 234.95 79.1209 0)
 			(effects
 				(font
@@ -3128,7 +3213,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "C13")
+					(reference "C36")
 					(unit 1)
 				)
 			)
@@ -3150,7 +3235,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4056497b-4078-4cbf-aaf0-5701f4e04fe9")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR081"
 			(at 125.73 133.35 0)
 			(effects
 				(font
@@ -3200,7 +3285,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR044")
+					(reference "#PWR081")
 					(unit 1)
 				)
 			)
@@ -3222,7 +3307,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "439bddfa-5f9a-43de-9d88-ac9509374d66")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR085"
 			(at 212.09 133.35 0)
 			(effects
 				(font
@@ -3272,7 +3357,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR048")
+					(reference "#PWR085")
 					(unit 1)
 				)
 			)
@@ -3293,7 +3378,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4687cc73-1ade-4fb9-9343-74e54c798fcd")
-		(property "Reference" "Q?"
+		(property "Reference" "Q2"
 			(at 190.5 90.17 0)
 			(effects
 				(font
@@ -3384,7 +3469,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4d51fbd3-8031-4bfb-8dbc-46737dc4b72b")
-		(property "Reference" "R?"
+		(property "Reference" "R23"
 			(at 214.63 115.5699 0)
 			(effects
 				(font
@@ -3447,7 +3532,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R14")
+					(reference "R23")
 					(unit 1)
 				)
 			)
@@ -3468,7 +3553,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "605e1ca2-5a62-42ca-8475-809255577890")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR076"
 			(at 242.57 71.12 0)
 			(effects
 				(font
@@ -3518,7 +3603,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR039")
+					(reference "#PWR076")
 					(unit 1)
 				)
 			)
@@ -3540,7 +3625,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "736aec82-27d0-4814-95a5-6b375a218d9e")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR080"
 			(at 110.49 133.35 0)
 			(effects
 				(font
@@ -3590,7 +3675,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR043")
+					(reference "#PWR080")
 					(unit 1)
 				)
 			)
@@ -3612,7 +3697,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7d251081-9342-40e0-8f45-71ce91dacefb")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR079"
 			(at 231.14 96.52 0)
 			(effects
 				(font
@@ -3662,7 +3747,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR042")
+					(reference "#PWR079")
 					(unit 1)
 				)
 			)
@@ -3684,7 +3769,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e368139-eba9-42ea-a620-da8d0f52b726")
-		(property "Reference" "R?"
+		(property "Reference" "R19"
 			(at 214.63 78.7399 0)
 			(effects
 				(font
@@ -3747,7 +3832,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R10")
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -3769,7 +3854,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "82c7c3d8-4cf6-454b-95cd-6a1521fa95e7")
-		(property "Reference" "R?"
+		(property "Reference" "R22"
 			(at 190.5 115.5699 0)
 			(effects
 				(font
@@ -3832,7 +3917,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R13")
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -3854,7 +3939,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "98971a20-87b8-4c67-a10c-85dfc7dfd033")
-		(property "Reference" "C?"
+		(property "Reference" "C35"
 			(at 110.49 77.4699 0)
 			(effects
 				(font
@@ -3917,7 +4002,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "C12")
+					(reference "C35")
 					(unit 1)
 				)
 			)
@@ -3939,7 +4024,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9cccb029-2c71-4649-8b4a-abbe3cebf504")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR083"
 			(at 163.83 133.35 0)
 			(effects
 				(font
@@ -3989,7 +4074,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR046")
+					(reference "#PWR083")
 					(unit 1)
 				)
 			)
@@ -4002,17 +4087,17 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 125.73 120.65 0)
+		(lib_id "Device:C")
+		(at 129.54 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a326b722-acd8-4210-95db-ed6c752f3de2")
-		(property "Reference" "R?"
-			(at 128.27 119.3799 0)
+		(uuid "a2e13bcc-122c-47e9-9359-5f79f14594cd")
+		(property "Reference" "C34"
+			(at 133.35 76.1999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4020,8 +4105,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
-			(at 128.27 121.9199 0)
+		(property "Value" "22u"
+			(at 133.35 78.7399 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4029,8 +4114,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 123.952 120.65 90)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 130.5052 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4038,8 +4123,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C49652949.pdf"
-			(at 125.73 120.65 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/C7432770.pdf"
+			(at 129.54 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4047,8 +4132,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 125.73 120.65 0)
+		(property "Description" "Unpolarized capacitor"
+			(at 129.54 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4056,8 +4141,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC PART #" "C49652949"
-			(at 125.73 120.65 0)
+		(property "LCSC PART #" "C7432770"
+			(at 129.54 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4066,21 +4151,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "0b7da402-c27b-4509-bcfe-a1d71d1fe20d")
+			(uuid "453bd5d1-150f-45b6-8ded-a4f8b38b02a6")
 		)
 		(pin "2"
-			(uuid "94f3a268-0ace-4c7b-b2f1-8bee798d8fc7")
+			(uuid "57b831b1-49ca-465f-af69-235c4754750d")
 		)
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R15")
-					(unit 1)
-				)
-			)
-			(project "boost2"
-				(path "/c24817a0-576e-4f0d-be02-2b4f6d63f25f"
-					(reference "R?")
+					(reference "C34")
 					(unit 1)
 				)
 			)
@@ -4095,7 +4174,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aa40f179-a997-4053-8e35-9c4939f1799b")
-		(property "Reference" "R?"
+		(property "Reference" "R18"
 			(at 99.06 66.294 90)
 			(effects
 				(font
@@ -4156,7 +4235,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R9")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -4178,7 +4257,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "abf0c83b-ea21-476c-ac40-e90eef5f2360")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR077"
 			(at 129.54 90.17 0)
 			(effects
 				(font
@@ -4228,7 +4307,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR040")
+					(reference "#PWR077")
 					(unit 1)
 				)
 			)
@@ -4250,7 +4329,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "adf06c7a-f301-4a81-8cd9-d3b1eb8cdd19")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR078"
 			(at 106.68 91.44 0)
 			(effects
 				(font
@@ -4300,7 +4379,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR041")
+					(reference "#PWR078")
 					(unit 1)
 				)
 			)
@@ -4322,7 +4401,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c27334bf-38c6-4d9b-9f71-1c561e43f2d0")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR082"
 			(at 146.05 133.35 0)
 			(effects
 				(font
@@ -4372,7 +4451,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR045")
+					(reference "#PWR082")
 					(unit 1)
 				)
 			)
@@ -4394,7 +4473,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c465b321-4d68-4649-b9a7-9d8ac18e0d83")
-		(property "Reference" "C?"
+		(property "Reference" "C38"
 			(at 167.64 111.7599 0)
 			(effects
 				(font
@@ -4457,7 +4536,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "C15")
+					(reference "C38")
 					(unit 1)
 				)
 			)
@@ -4479,7 +4558,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cba70f4e-a5eb-4215-a8f8-e60b5e643328")
-		(property "Reference" "D?"
+		(property "Reference" "D2"
 			(at 199.7075 64.77 0)
 			(effects
 				(font
@@ -4540,7 +4619,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "D3")
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -4561,7 +4640,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d10075f0-5309-457a-90ec-cbcc031548f8")
-		(property "Reference" "R?"
+		(property "Reference" "R20"
 			(at 175.26 96.266 90)
 			(effects
 				(font
@@ -4622,7 +4701,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R11")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -4643,7 +4722,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dae70252-2432-4276-8834-b363646e953b")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR074"
 			(at 91.44 71.12 0)
 			(effects
 				(font
@@ -4693,7 +4772,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR037")
+					(reference "#PWR074")
 					(unit 1)
 				)
 			)
@@ -4715,7 +4794,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dd979445-d9bf-4ab9-bc64-ca77af08fb06")
-		(property "Reference" "L?"
+		(property "Reference" "L2"
 			(at 149.86 66.04 90)
 			(effects
 				(font
@@ -4789,91 +4868,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Polarized")
-		(at 129.54 77.47 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e2fecb9c-5592-40cc-9852-2f2552215da6")
-		(property "Reference" "C?"
-			(at 133.35 75.3109 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "22u"
-			(at 133.35 77.8509 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 130.5052 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/C44606504.pdf"
-			(at 129.54 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Polarized capacitor"
-			(at 129.54 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC PART #" "C44606504"
-			(at 129.54 77.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "440b51df-5245-4fe6-9a87-10b6922774aa")
-		)
-		(pin "2"
-			(uuid "41e331dc-05e5-4af9-9977-b13c30af2555")
-		)
-		(instances
-			(project "GP1247AI"
-				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "C11")
-					(unit 1)
-				)
-			)
-			(project "boost2"
-				(path "/c24817a0-576e-4f0d-be02-2b4f6d63f25f"
-					(reference "C?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Potentiometer")
 		(at 212.09 97.79 0)
 		(unit 1)
@@ -4883,7 +4877,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e56f3275-3254-4c6b-82d4-aa781d371fbf")
-		(property "Reference" "RV?"
+		(property "Reference" "RV2"
 			(at 209.55 96.5199 0)
 			(effects
 				(font
@@ -4970,7 +4964,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f3d1485b-dd34-4ca5-ac65-3fdc8b43ffe6")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR075"
 			(at 129.54 71.12 0)
 			(effects
 				(font
@@ -5020,7 +5014,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "#PWR038")
+					(reference "#PWR075")
 					(unit 1)
 				)
 			)
@@ -5042,7 +5036,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f5928667-bf67-42f4-ac49-368eaa5c24b5")
-		(property "Reference" "C?"
+		(property "Reference" "C37"
 			(at 129.54 106.6799 0)
 			(effects
 				(font
@@ -5105,7 +5099,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "C14")
+					(reference "C37")
 					(unit 1)
 				)
 			)
@@ -5127,7 +5121,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f67ab7df-1aa0-4af3-8af6-7bbb881afd17")
-		(property "Reference" "R?"
+		(property "Reference" "R21"
 			(at 113.03 110.4899 0)
 			(effects
 				(font
@@ -5190,7 +5184,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "R12")
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -5212,7 +5206,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fb360c4b-9f97-49c4-9f8f-8e9b698a2f4d")
-		(property "Reference" "U?"
+		(property "Reference" "U8"
 			(at 148.59 83.82 0)
 			(effects
 				(font
@@ -5291,7 +5285,7 @@
 		(instances
 			(project "GP1247AI"
 				(path "/152923e7-b4e9-428d-b807-06741b10ce95/17e0c34b-4067-4a28-8fea-c23b1257ec90"
-					(reference "U4")
+					(reference "U8")
 					(unit 1)
 				)
 			)

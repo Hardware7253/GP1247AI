@@ -1,0 +1,136 @@
+(footprint "B0505S-2WR3"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "2W Isolated 5V power supply")
+	(property "Reference" "REF**"
+		(at 6.16 -1.92 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "51ab2410-6113-49ed-b5ba-bc47a1c073fe")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.153)
+			)
+		)
+	)
+	(property "Value" "B0505S-2WR3"
+		(at 6.74 2.32 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f34f28b0-738a-4307-9fbc-266caa78d00b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e53ce4a3-a19d-4742-99f0-7fa505645777")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "0af82bdd-16af-499c-a5a6-5e17e83e6bdb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -3.81 -1.27)
+		(end 18.55 6.49)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "22e4d0d3-70bd-4bf8-85f2-1ea424ac2a0b")
+	)
+	(fp_rect
+		(start -2.21 -0.9)
+		(end 17.11 6.04)
+		(stroke
+			(width 0.153)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "2f0e7940-d858-42ee-9072-55ac7d9c0a59")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 6.74 3.82 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7c6228fb-3937-4b91-bfe7-3030617bba4b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0 180)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a75addd9-d856-46e5-aa27-95f829366b15")
+	)
+	(pad "2" thru_hole circle
+		(at 2.54 0 180)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8f3e381c-bfd6-4104-b1ec-303ccf1e2a93")
+	)
+	(pad "4" thru_hole circle
+		(at 7.62 0 180)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "fcbca980-9860-46c1-ad80-7c6ccd179f67")
+	)
+	(pad "6" thru_hole circle
+		(at 12.7 0 180)
+		(size 1.8 1.8)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "72760a1e-018f-4213-b650-1fb250b75762")
+	)
+	(embedded_fonts no)
+	(model "${KICAD9_3DMODEL_DIR}/Converter_DCDC.3dshapes/Converter_DCDC_XP_POWER-IHxxxxS_THT.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -90)
+		)
+	)
+)

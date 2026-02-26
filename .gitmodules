@@ -1,0 +1,18 @@
+[submodule "Code/submodules/CMSIS_5"]
+	path = Code/submodules/CMSIS_5
+	url = https://github.com/ARM-software/CMSIS_5.git
+[submodule "Code/submodules/cmsis-device-f4"]
+	path = Code/submodules/cmsis-device-f4
+	url = https://github.com/STMicroelectronics/cmsis-device-f4.git
+[submodule "Code/submodules/stm32f4xx-hal-driver"]
+	path = Code/submodules/stm32f4xx-hal-driver
+	url = https://github.com/STMicroelectronics/stm32f4xx-hal-driver.git
+[submodule "Code/submodules/embedded_c_modules"]
+	path = Code/submodules/embedded_c_modules
+	url = https://github.com/Hardware7253/embedded_c_modules.git
+[submodule "Code/submodules/u8g2"]
+	path = Code/submodules/u8g2
+	url = https://github.com/olikraus/u8g2.git
+[submodule "Code/submodules/tinyusb"]
+	path = Code/submodules/tinyusb
+	url = https://github.com/hathach/tinyusb.git

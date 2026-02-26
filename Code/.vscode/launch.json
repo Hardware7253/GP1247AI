@@ -1,0 +1,19 @@
+// https://github.com/prtzl/Embedded_videos/blob/master/045_BUILDING-PT4/test-f407vg/.vscode/launch.json
+
+{
+    "version": "0.0.1",
+    "projectName": "stm32",
+    "configurations": [
+        {
+            "name": "STlink launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/target/firmware.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            "interface": "swd",
+            "preLaunchTask": "build", // configured in tasks.json
+            "svdFile": "${workspaceFolder}/STM32F405.svd", // Include svd to watch device peripherals
+        },
+    ]
+}

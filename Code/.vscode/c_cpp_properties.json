@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "STM32",
+            "compilerPath": "/usr/bin/arm-none-eabi-gcc",
+            "intelliSenseMode": "gcc-arm",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+
+            "includePath": [
+                "${workspaceFolder}",
+                "/usr/lib/gcc/arm-none-eabi/14.2.0/include",
+                "${workspaceFolder}/submodules/CMSIS_5/CMSIS/Core/Include",
+                "${workspaceFolder}/submodules/cmsis-device-f4/Include",
+                "${workspaceFolder}/submodules/stm32f4xx-hal-driver/Inc",
+                "${workspaceFolder}/submodules/embedded_c_modules/**",
+                "${workspaceFolder}/submodules//u8g2/csrc",
+                "${workspaceFolder}/submodules/tinyusb/src",
+                "${workspaceFolder}/main_csrc/**"
+            ],
+
+            "defines": [
+                "STM32F405xx"
+            ]
+        }
+    ],
+    "version": 4
+}

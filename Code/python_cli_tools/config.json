@@ -1,0 +1,33 @@
+{
+    "config": {
+        "num_byte_len": "4",
+        "meta_len": "6",
+        "message_chars": "2",
+        "max_arguments": "1",
+        "packet_size": "64",
+        "ack_timout_ms": "5",
+        "bmp_row_major": "false",
+        "bmp_lsb_first": "true",
+        "device_storage_bytes": "16777216"
+    },
+    "commands": {
+        "start_file_transfer": "ST",
+        "request_next_packet": "RP",
+        "acknowledge": "AK",
+        "request_time": "RT",
+        "send_erase_progress": "EP",
+        "send_hour": "SH",
+        "send_minute": "Sm",
+        "send_second": "SS",
+        "send_subsecond": "Ss",
+        "set_time": "TS",
+        "send_weekday": "Sd",
+        "send_day": "SD",
+        "send_month": "SM",
+        "send_year": "SY",
+        "set_date": "DS",
+        "cal_rtc_forward": "CF",
+        "cal_rtc_backward": "CB",
+        "error_command": "er"
+    }
+}

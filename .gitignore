@@ -4,3 +4,6 @@ fp-info-cache
 *.bak
 *.lck
 gerbers
+target
+__pycache__
+media

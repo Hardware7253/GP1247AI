@@ -40,13 +40,21 @@
 #define LDR_ADC                 ADC1
 #define LDR_ADC_CHANNEL         ADC_CHANNEL_14 
 
+// Set to 1 to enable features
 #define SHOW_SECONDS_ON_CLOCK 0 
+#define USE_12_HOUR_TIME 1
 
 #define UPDATE_BRIGHTNESS_PERIOD 1000 /* Update the brightness every second*/
 #define DISP_MAX_BRIGHTNESS 400
-#define DISP_MIN_BRIGHTNESS 1
+#define DISP_MIN_BRIGHTNESS 10
 #define LDR_READ_MAX 4000
-#define LDR_READ_MIN 278 
+#define LDR_READ_MIN 100 
+
+// Define a second threshold where the brightness abrubtly drops off in a pitch black room
+// Also define hysteresis so the brightness won't change all the time if the LDR read hovers around 30
+#define LDR_READ_ABS_MIN 28 
+#define ABS_MIN_HYSTERESIS 10
+#define DISP_ABS_MIN_BRIGHTNESS 1
 
 extern void EXTI0_IRQHandler(void) {
     HAL_GPIO_EXTI_IRQHandler(TILT_SW_PIN);
@@ -158,47 +166,12 @@ int main(void) {
     u8g2_ClearDisplay(&u8g2);
     u8g2_SetContrast(&u8g2, DISP_MAX_BRIGHTNESS / 2);
 
-    uint8_t wbuf[256] = {
-        0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-        10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-        20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-        30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-        40, 41, 42, 43, 44, 45, 46, 47, 48, 49,
-        50, 51, 52, 53, 54, 55, 56, 57, 58, 59,
-        60, 61, 62, 63, 64, 65, 66, 67, 68, 69,
-        70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
-        80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
-        90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
-        100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
-        110, 111, 112, 113, 114, 115, 116, 117, 118, 119,
-        120, 121, 122, 123, 124, 125, 126, 127,
-        128, 129, 130, 131, 132, 133, 134, 135, 136, 137,
-        138, 139, 140, 141, 142, 143, 144, 145, 146, 147,
-        148, 149, 150, 151, 152, 153, 154, 155, 156, 157,
-        158, 159, 160, 161, 162, 163, 164, 165, 166, 167,
-        168, 169, 170, 171, 172, 173, 174, 175, 176, 177,
-        178, 179, 180, 181, 182, 183, 184, 185, 186, 187,
-        188, 189, 190, 191, 192, 193, 194, 195, 196, 197,
-        198, 199, 200, 201, 202, 203, 204, 205, 206, 207,
-        208, 209, 210, 211, 212, 213, 214, 215, 216, 217,
-        218, 219, 220, 221, 222, 223, 224, 225, 226, 227,
-        228, 229, 230, 231, 232, 233, 234, 235, 236, 237,
-        238, 239, 240, 241, 242, 243, 244, 245, 246, 247,
-        248, 249, 250, 251, 252, 253, 254, 255
-    };
-    // w25q128_erase(SECTOR_ERASE_4KIB, 0);
-    // w25q128_write(0, wbuf, 256);
-
-    uint8_t rbuf[512] = {0};
-    uint8_t *buf = rbuf;
-    w25q_read(&flash, 0x0, rbuf, 512);
-
-
     software_timer_t brightness_adj_timer = construct_stimer_p(get_tick_frequency(), UPDATE_BRIGHTNESS_PERIOD, HAL_GetTick(), PERIODIC_ST);
 
     bool update_gfx = true;
     bool mode_sw_state = false;
     bool is_device_upright = false;
+    bool dark_room = false;
     while (true) {
         run_command_runner(&hrtc, &animation, &flash);
 
@@ -210,19 +183,25 @@ int main(void) {
             uint32_t brightness = DISP_MIN_BRIGHTNESS;
             if (HAL_ADC_PollForConversion(&hadc, 10) == HAL_OK) {
                 uint32_t ldr_read = HAL_ADC_GetValue(&hadc);
-                brightness = map(
-                    ldr_read,
-                    LDR_READ_MIN, LDR_READ_MAX,
-                    DISP_MIN_BRIGHTNESS, DISP_MAX_BRIGHTNESS
-                );
 
-                if (brightness > DISP_MAX_BRIGHTNESS) {
-                    brightness = DISP_MAX_BRIGHTNESS;
+                if (ldr_read > LDR_READ_ABS_MIN + ABS_MIN_HYSTERESIS) {
+                    dark_room = false;
+                }
+
+                if ((ldr_read <= LDR_READ_ABS_MIN) || dark_room) {
+                    dark_room = true;
+                    brightness = DISP_ABS_MIN_BRIGHTNESS;
+                } else {
+                    brightness = map(
+                        ldr_read,
+                        LDR_READ_MIN, LDR_READ_MAX,
+                        DISP_MIN_BRIGHTNESS, DISP_MAX_BRIGHTNESS
+                    );
                 }
             }
             HAL_ADC_Stop(&hadc);
 
-            u8g2_SetContrast(&u8g2, brightness);
+            gp1247ai_set_brightness(brightness, send_disp_buf_blocking);
         }
 
         // Check for mode change interrupt event 
@@ -247,22 +226,33 @@ int main(void) {
         if (mode_sw_state) {
             run_animation(&animation, !is_device_upright);
         } else { // Run clock
-            HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BCD);
+            HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
             HAL_RTC_GetDate(&hrtc, &date, RTC_FORMAT_BCD);
 
-            if (date.Date != last_date.Date | update_gfx) {
+            if ((date.Date != last_date.Date) || update_gfx) {
                 clock_draw_date(&u8g2, date.WeekDay, date.Date, date.Month);
                 update_gfx = true;
             }
 
-            if (time.Minutes != last_time.Minutes | update_gfx) {
-                clock_draw_time(&u8g2, time.Hours, time.Minutes);
+            if ((time.Minutes != last_time.Minutes) || update_gfx) {
+                uint8_t hours = time.Hours;
+
+                // Convert 24 hour time to 12 hour time
+                #if USE_12_HOUR_TIME == 1
+                if (hours > 12) {
+                    hours -= 12;
+                } else if (hours == 0) {
+                    hours = 12;
+                }
+                #endif
+
+                clock_draw_time(&u8g2, RTC_ByteToBcd2(hours), RTC_ByteToBcd2(time.Minutes));
                 clock_draw_date(&u8g2, date.WeekDay, date.Date, date.Month);
                 update_gfx = true;
             }
 
             #if SHOW_SECONDS_ON_CLOCK != 0
-            if (time.Seconds != last_time.Seconds | update_gfx) {
+            if (time.Seconds != last_time.Seconds || update_gfx) {
                 clock_draw_second(&u8g2, time.Seconds); 
                 update_gfx = true;
             }

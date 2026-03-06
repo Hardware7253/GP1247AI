@@ -43,7 +43,7 @@ static void rotate_bmp(animation_t *animation) {
         animation->bmp[i] = RBIT(temp);
     }
 
-    if (bmp_len & 1 != 0) {
+    if ((bmp_len & 1) != 0) {
         animation->bmp[halfway_point] = RBIT(animation->bmp[halfway_point]);
     }
 }

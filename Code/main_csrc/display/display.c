@@ -69,7 +69,7 @@ void send_disp_buf(uint8_t *buf, uint32_t buf_len) {
     block_until_last_disp_tx_cplt();
     is_tx_done = false;
     HAL_GPIO_WritePin(CS_PIN_BUS, CS_PIN, !CS_IDLE_STATE);
-    volatile HAL_StatusTypeDef status = HAL_SPI_Transmit_DMA(&hspi, buf, (uint16_t)buf_len);
+    HAL_SPI_Transmit_DMA(&hspi, buf, (uint16_t)buf_len);
 }
 
 // Sends a buffer to the display over spi and blocks until complete
@@ -84,8 +84,6 @@ void send_disp_buf_blocking(uint8_t *buf, uint32_t buf_len) {
 }
 
 static uint8_t u8x8_byte_hw_spi(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr) {
-    static bool spi_setup = false;
-
     switch(msg) {
         case U8X8_MSG_BYTE_SEND:
             uint8_t arg = RBIT(*(uint8_t*)arg_ptr);

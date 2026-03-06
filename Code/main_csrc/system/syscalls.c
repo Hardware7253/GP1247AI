@@ -12,6 +12,7 @@ void _fini(void) {
 }
 
 int _write(int fd, char *ptr, int len) {
+  (void) fd;
     for (int i = 0; i < len; i++) {
         ITM_SendChar(*ptr++);
     }

@@ -105,7 +105,7 @@ void rx_usb_cmd(const char *cmd_id, cmd_arg_int *args_buf, bool blocking_read, b
     }
 
     uint8_t rx_buf[COMMAND_LEN] = {0};
-    uint32_t rx_cnt = tud_cdc_n_read(CMD_CDC_PORT, &rx_buf, COMMAND_LEN);
+    tud_cdc_n_read(CMD_CDC_PORT, &rx_buf, COMMAND_LEN);
     memcpy((uint8_t*)cmd_id, rx_buf, COMMAND_CHARS);
     memcpy((uint8_t*)args_buf, rx_buf + COMMAND_CHARS, MAX_ARGS * sizeof(cmd_arg_int));
 

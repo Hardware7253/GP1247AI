@@ -13,7 +13,46 @@
             "servertype": "stutil",
             "interface": "swd",
             "preLaunchTask": "build", // configured in tasks.json
-            "svdFile": "${workspaceFolder}/STM32F405.svd", // Include svd to watch device peripherals
+            "svdFile": "${workspaceFolder}/stm32f407.svd", // Include svd to watch device peripherals
+        },
+
+        {
+            "name": "Test",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/target/firmware.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "stlink",
+            "interface": "swd",
+            "preLaunchTask": "build", // configured in tasks.json
+            "svdFile": "${workspaceFolder}/stm32f407.svd", // Include svd to watch device peripherals
+            "swoConfig": {
+                "enabled":true,
+                "source":"probe",
+                "swoFrequency": 2000000,
+                "cpuFrequency": 168000000,
+                "decoders": [
+                    {
+                        "port": 0,
+                        "type": "console",
+                        "label": "SWO output",
+                        "encoding":"ascii"
+                    }
+                ]
+            }
+        },
+
+        {
+            "name": "STlink attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/target/firmware.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "stutil",
+            // "device": "STM32F407xx",
+            "interface": "swd",
+            // "preLaunchTask": "build", // configured in tasks.json
+            "svdFile": "${workspaceFolder}/stm32f407.svd", // Include svd to watch device peripherals
         },
     ]
 }

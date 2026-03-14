@@ -1,0 +1,22 @@
+{
+    "config": {
+        "num_byte_len": "2",
+        "message_chars": "2",
+        "max_arguments": "2",
+        "packet_size": "64",
+        "ack_timout_ms": "5",
+        "bmp_row_major": "false",
+        "bmp_lsb_first": "true"
+    },
+    "commands": {
+        "animation_request": "AR",
+        "set_framerate": "SF",
+        "set_location": "SL",
+        "start_animation": "SA",
+        "frame_request": "FR",
+        "next_frame_packet": "NP",
+        "cancel_animation": "CA",
+        "acknowledge": "AK",
+        "error_command": "er"
+    }
+}

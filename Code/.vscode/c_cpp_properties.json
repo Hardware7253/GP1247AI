@@ -10,17 +10,18 @@
             "includePath": [
                 "${workspaceFolder}",
                 "/usr/lib/gcc/arm-none-eabi/14.2.0/include",
-                "${workspaceFolder}/submodules/CMSIS_5/CMSIS/Core/Include",
-                "${workspaceFolder}/submodules/cmsis-device-f4/Include",
-                "${workspaceFolder}/submodules/stm32f4xx-hal-driver/Inc",
-                "${workspaceFolder}/submodules/embedded_c_modules/**",
-                "${workspaceFolder}/submodules//u8g2/csrc",
-                "${workspaceFolder}/submodules/tinyusb/src",
-                "${workspaceFolder}/main_csrc/**"
+                "${workspaceFolder}/CMSIS_5/CMSIS/Core/Include",
+                "${workspaceFolder}/cmsis-device-f4/Include",
+                "${workspaceFolder}/stm32f4xx-hal-driver/Inc",
+                "${workspaceFolder}/embedded_c_modules/**",
+                // "${workspaceFolder}/u8g2/cppsrc",
+                "${workspaceFolder}/u8g2/csrc",
+                "${workspaceFolder}/tinyusb/src",
+                "${workspaceFolder}/usb"
             ],
 
             "defines": [
-                "STM32F405xx"
+                "STM32F407xx"
             ]
         }
     ],

@@ -8,29 +8,29 @@
 void gp1247ai_write_bmp(
     uint8_t start_x,
     uint8_t start_y,
-    uint8_t bmp_buf[],
+    uint8_t bmp[],
     uint8_t bmp_width,
     uint8_t bmp_height,
-    vfd_tx_fp send_buf
+    send_buf_fp send_buf
 ) {
     uint8_t height_bytes = (bmp_height + 7) / 8;
     uint32_t bmp_len = height_bytes * bmp_width;
-    bmp_buf[0] = 0xF0;
-    bmp_buf[1] = start_x;
-    bmp_buf[2] = start_y;
-    bmp_buf[3] = (height_bytes * 8) - 1; // c parameter
+    bmp[0] = 0xF0;
+    bmp[1] = start_x;
+    bmp[2] = start_y;
+    bmp[3] = (height_bytes * 8) - 1; // c parameter
 
 
     // Writes to the cg_ram of the display
     // The drawing of the bitmap starts at start_x and start_y
     // c is the vertical size of the bitmap, must be a multiple of 8
-    send_buf(bmp_buf, bmp_len + 4);
+    send_buf(bmp, bmp_len + 4);
 }
 
 // Set the display brightness 
 // Brightness should be in the range 0-1023
 // Datasheet recommends brightness below 500 for longjevity
-void gp1247ai_set_brightness(uint32_t brightness, vfd_tx_fp send_buf) {
+void gp1247ai_set_brightness(uint32_t brightness, send_buf_fp send_buf) {
     brightness &= 0x03FF; // There are only 12 brightness bits
     uint8_t buf[] = {0xA0, (uint8_t)(brightness >> 8), (uint8_t)brightness};
     send_buf(buf, 3);
@@ -38,7 +38,7 @@ void gp1247ai_set_brightness(uint32_t brightness, vfd_tx_fp send_buf) {
 
 // Send init commands    
 // senf_buf should control spi and cs
-void gp1247ai_init(vfd_tx_fp send_buf) {
+void gp1247ai_init(send_buf_fp send_buf) {
 
     // Hardcode standard init sequence from datasheet
     // First byte is the command ID

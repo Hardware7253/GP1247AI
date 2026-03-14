@@ -1,12 +1,11 @@
 """
     This module is responsible for reading config information from the json,
-    and converting it into a c header file for the embedded software.
-    Helpful macros are also generated into the header.
+    and converting it into a c header file for the embedded software
 """
 
 import json
 
-output_header = "../main_csrc/usb/usb_cmd_cfg.h"
+output_header = "../usb_cmd_cfg.h"
 config_json = "config.json"
 
 class Config:
@@ -15,15 +14,12 @@ class Config:
             json_data = json.load(json_file)
             self.num_byte_len = int(json_data["config"]["num_byte_len"])
             self.message_chars = int(json_data["config"]["message_chars"])
-            self.max_arguments = int(json_data["config"]["max_arguments"])
+            self.max_arguments = int(json_data["config"]["message_chars"])
             self.packet_size = int(json_data["config"]["packet_size"])
             self.ack_timout_ms = int(json_data["config"]["ack_timout_ms"])
-            self.meta_len = int(json_data["config"]["meta_len"])
 
             self.bmp_row_major = json_data["config"]["bmp_row_major"].lower() == "true" 
             self.bmp_lsb_first = json_data["config"]["bmp_lsb_first"].lower() == "true" 
-
-            self.device_storage_bytes = int(json_data["config"]["device_storage_bytes"])
 
             self.commands_dict = json_data["commands"]
 
@@ -46,13 +42,12 @@ class Config:
 
             typedef {num_type} cmd_arg_int; // Numbers given as argumenets use this type
 
-            #define FILE_PACKET_SIZE {self.packet_size} 
+            #define FRAME_PACKET_SIZE {self.packet_size} /* Frame buffer packets can be this long or shorter*/
             #define COMMAND_CHARS {self.message_chars}
             #define MAX_ARGS {self.max_arguments}
             #define COMMAND_LEN {self.message_chars + (self.num_byte_len * self.max_arguments)} 
             #define ACK_TIMEOUT_MS {self.ack_timout_ms} /* Resend un-acknowledged command after this time */
 
-            #define ANIMATION_META_LEN {self.meta_len} /* How many metadata numbers are in the animation file */
             #define ROUND_DIV(num, nearest) ((num + (nearest - 1)) / nearest) 
             #define CIEL_INT(num, nearest) (ROUND_DIV(num, nearest) * nearest)
         """
@@ -65,11 +60,12 @@ class Config:
 
             if (self.bmp_row_major):
                 f.write("// For row major byte alligned framebuffer / bitmaps\n")
-                f.write("#define CALC_BMP_BYTES(width, height) (ROUND_DIV(width, 8) * height)\n")
+                f.write("#define CALC_FB_BYTES(width, height) (ROUND_DIV(width, 8) * height)\n")
             else:
                 f.write("// For column major byte alligned framebuffer / bitmaps\n")
-                f.write("#define CALC_BMP_BYTES(width, height) (width * ROUND_DIV(height, 8))\n")
-            f.write("\n")
+                f.write("#define CALC_FB_BYTES(width, height) (width * ROUND_DIV(height, 8))\n")
+
+            f.write("#define PACKET_ALIGNED_FB_SIZE(width, height) CIEL_INT(CALC_FB_BYTES(width, height), FRAME_PACKET_SIZE)\n\n")
 
             for command, command_id in self.commands_dict.items():
                 f.write(f"#define {command.upper()} \"{command_id}\"\n")

@@ -69,5 +69,3 @@ uint32_t get_tick_frequency(void) {
 extern void SysTick_Handler(void) {
     HAL_IncTick();
 }
-
-// extern void

@@ -3,6 +3,7 @@ fp-info-cache
 *.kical_prl
 *.bak
 *.lck
+.history
 gerbers
 target
 __pycache__

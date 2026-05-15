@@ -557,7 +557,7 @@
       "method": 0,
       "sort_order": 0
     },
-    "bom_export_filename": "manufacture/${PROJECTNAME}_BOM.csv",
+    "bom_export_filename": "manufacture/${PROJECTNAME}.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
